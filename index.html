@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shrikar Kuncham - Principal Swarm Lead at Salesforce with 10+ years of IT experience specializing in Salesforce architecture, AI/Agentforce, and platform development">
+    <meta name="author" content="Shrikar Kuncham">
+    <meta property="og:title" content="Shrikar Kuncham - Salesforce Architect & Principal Swarm Lead">
+    <meta property="og:description" content="10+ years architecting complex Salesforce solutions, specializing in AI, Agentforce, Service Cloud, and enterprise integrations">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shrikar94.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Shrikar Kuncham - Salesforce Architect & Principal Swarm Lead</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>SK</text></svg>">
+
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-surface: #1a1a2e;
+            --bg-surface-alt: #16213e;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --spacing: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        .navbar__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar__brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar__brand:hover {
+            color: var(--accent-secondary);
+        }
+
+        .navbar__nav {
+            display: flex;
+            gap: calc(var(--spacing) * 4);
+            list-style: none;
+        }
+
+        .navbar__link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar__link:hover,
+        .navbar__link--active {
+            color: var(--text-primary);
+        }
+
+        .navbar__link--active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .navbar__toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .navbar__toggle-line {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: calc(var(--spacing) * 10) calc(var(--spacing) * 3);
+        }
+
+        .hero__bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero__gradient {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero__gradient:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .hero__gradient:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+            top: 50%;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .hero__gradient:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+            bottom: -100px;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero__avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto calc(var(--spacing) * 3);
+            background: var(--accent-gradient);
+            padding: 4px;
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.4);
+        }
+
+        .hero__avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .hero__title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing) * 2);
+            background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--accent-secondary);
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing) * 3);
+        }
+
+        .hero__description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: calc(var(--spacing) * 4);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__cta {
+            display: flex;
+            gap: calc(var(--spacing) * 2);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn--primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn--secondary {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Section Common */
+        .section {
+            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 3);
+            position: relative;
+        }
+
+        .section--alt {
+            background: rgba(22, 33, 62, 0.3);
+        }
+
+        .section__container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section__header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing) * 8);
+        }
+
+        .section__title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing) * 2);
+            background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section__subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about__content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about__content p {
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        /* Skills Section */
+        .skills__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing) * 4);
+        }
+
+        .skill-category {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing) * 4);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing) * 3);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing) * 2);
+        }
+
+        .skill-category__icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .skill-category__icon--ai {
+            background: var(--accent-primary);
+            box-shadow: 0 0 16px rgba(79, 70, 229, 0.6);
+        }
+
+        .skill-category__icon--platform {
+            background: #10b981;
+            box-shadow: 0 0 16px rgba(16, 185, 129, 0.6);
+        }
+
+        .skill-category__icon--engineering {
+            background: #f59e0b;
+            box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+        }
+
+        .skill-category__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--spacing) * 1.5);
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            padding: calc(var(--spacing) * 1) calc(var(--spacing) * 2);
+            border-radius: var(--radius-xl);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Certifications Section */
+        .certifications__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--spacing) * 3);
+        }
+
+        .cert-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing) * 4);
+            text-align: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-secondary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cert-card__icon {
+            font-size: 3rem;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .cert-card__title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--spacing) * 1);
+        }
+
+        .cert-card__subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .certifications__cta {
+            text-align: center;
+            margin-top: calc(var(--spacing) * 6);
+        }
+
+        /* Experience Section */
+        .experience__timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .experience__timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        .experience-item {
+            position: relative;
+            padding-left: calc(var(--spacing) * 8);
+            margin-bottom: calc(var(--spacing) * 6);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 16px rgba(79, 70, 229, 0.6);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .experience-item__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: calc(var(--spacing) * 2);
+            flex-wrap: wrap;
+            gap: calc(var(--spacing) * 2);
+        }
+
+        .experience-item__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--spacing) * 0.5);
+        }
+
+        .experience-item__company {
+            font-size: 1.125rem;
+            color: var(--accent-secondary);
+            font-weight: 500;
+        }
+
+        .experience-item__period {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 2);
+            background: var(--glass-bg);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-glass);
+            white-space: nowrap;
+        }
+
+        .experience-item__description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .experience-item__highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 1.5);
+        }
+
+        .experience-item__highlights li {
+            color: var(--text-secondary);
+            padding-left: calc(var(--spacing) * 3);
+            position: relative;
+        }
+
+        .experience-item__highlights li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: calc(var(--spacing) * 4);
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing) * 4);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .project-card__icon {
+            font-size: 2.5rem;
+        }
+
+        .project-card__title {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--spacing) * 1);
+        }
+
+        .project-card__description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: calc(var(--spacing) * 3);
+            flex-grow: 1;
+        }
+
+        .project-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--spacing) * 1);
+        }
+
+        .project-card__tag {
+            font-size: 0.8rem;
+            color: var(--accent-secondary);
+            background: rgba(6, 182, 212, 0.1);
+            padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1.5);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        /* Blog Section */
+        .blog__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing) * 4);
+        }
+
+        .blog-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-secondary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-card__content {
+            padding: calc(var(--spacing) * 4);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card__meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: calc(var(--spacing) * 1);
+        }
+
+        .blog-card__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--spacing) * 2);
+            line-height: 1.4;
+        }
+
+        .blog-card__excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: calc(var(--spacing) * 3);
+            flex-grow: 1;
+        }
+
+        .blog-card__link {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--spacing) * 1);
+            transition: gap 0.3s ease;
+        }
+
+        .blog-card__link:hover {
+            gap: calc(var(--spacing) * 2);
+        }
+
+        /* Education Section */
+        .education__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: calc(var(--spacing) * 4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing) * 4);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .education-card__degree {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--spacing) * 1);
+        }
+
+        .education-card__major {
+            font-size: 1.125rem;
+            color: var(--accent-secondary);
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .education-card__university {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing) * 1);
+        }
+
+        .education-card__meta {
+            display: flex;
+            gap: calc(var(--spacing) * 3);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact Section */
+        .contact__content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact__description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing) * 6);
+            line-height: 1.8;
+        }
+
+        .contact__links {
+            display: flex;
+            gap: calc(var(--spacing) * 3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(15, 15, 26, 0.8);
+            border-top: 1px solid var(--border-glass);
+            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
+            text-align: center;
+        }
+
+        .footer__content {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar__nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 15, 26, 0.95);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: calc(var(--spacing) * 3);
+                gap: calc(var(--spacing) * 2);
+                border-top: 1px solid var(--border-glass);
+            }
+
+            .navbar__nav--open {
+                display: flex;
+            }
+
+            .navbar__toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: calc(var(--spacing) * 15) calc(var(--spacing) * 2) calc(var(--spacing) * 8);
+            }
+
+            .section {
+                padding: calc(var(--spacing) * 8) calc(var(--spacing) * 2);
+            }
+
+            .experience__timeline::before {
+                left: 10px;
+            }
+
+            .experience-item {
+                padding-left: calc(var(--spacing) * 5);
+            }
+
+            .experience-item::before {
+                left: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar__inner">
+            <a href="#hero" class="navbar__brand">Shrikar Kuncham</a>
+            <button class="navbar__toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span class="navbar__toggle-line"></span>
+                <span class="navbar__toggle-line"></span>
+                <span class="navbar__toggle-line"></span>
+            </button>
+            <ul class="navbar__nav" id="navbar-nav">
+                <li><a href="#about" class="navbar__link">About</a></li>
+                <li><a href="#skills" class="navbar__link">Skills</a></li>
+                <li><a href="#certifications" class="navbar__link">Certifications</a></li>
+                <li><a href="#experience" class="navbar__link">Experience</a></li>
+                <li><a href="#projects" class="navbar__link">Projects</a></li>
+                <li><a href="#blog" class="navbar__link">Blog</a></li>
+                <li><a href="#education" class="navbar__link">Education</a></li>
+                <li><a href="#contact" class="navbar__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero__bg">
+            <div class="hero__gradient"></div>
+            <div class="hero__gradient"></div>
+            <div class="hero__gradient"></div>
+        </div>
+        <div class="hero__content">
+            <div class="hero__avatar">
+                <div class="hero__avatar-img">SK</div>
+            </div>
+            <h1 class="hero__title">Shrikar Kuncham</h1>
+            <p class="hero__subtitle">Principal Swarm Lead @ Salesforce</p>
+            <p class="hero__description">
+                Highly accomplished Salesforce professional with 10 years of IT experience, including 8 years architecting and delivering complex Salesforce solutions. Proven ability to translate intricate business requirements into scalable, secure, and high-performing Salesforce ecosystems across diverse industries.
+            </p>
+            <div class="hero__cta">
+                <a href="mailto:shrikar92@gmail.com" class="btn btn--primary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/shrikar-kuncham-79417256" target="_blank" rel="noopener" class="btn btn--secondary">LinkedIn Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">About Me</h2>
+            </div>
+            <div class="about__content fade-in">
+                <p>
+                    I'm a results-driven Salesforce architect with a decade of IT experience, specializing in complex enterprise solutions. My expertise spans the full Salesforce ecosystem — from architecting scalable Service Cloud and Experience Cloud solutions to designing AI-powered applications using Agentforce and Prompt Builder.
+                </p>
+                <p>
+                    Throughout my career at Salesforce, I've worked with 50+ clients across banking, insurance, and commercial sectors, delivering real-time integration solutions using Platform Events, CDC, and Streaming API. I'm passionate about building innovative solutions that drive business transformation while mentoring junior engineers and contributing to Salesforce's knowledge-sharing initiatives through Trailhead content development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section--alt">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Skills & Expertise</h2>
+                <p class="section__subtitle">Technologies and platforms I work with</p>
+            </div>
+            <div class="skills__grid">
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category__title">
+                        <span class="skill-category__icon skill-category__icon--ai"></span>
+                        AI & Agents
+                    </h3>
+                    <div class="skill-category__list">
+                        <span class="skill-badge">Agentforce</span>
+                        <span class="skill-badge">Prompt Builder</span>
+                        <span class="skill-badge">Data Cloud</span>
+                        <span class="skill-badge">LLM Configuration</span>
+                        <span class="skill-badge">Slack ASA Bots</span>
+                        <span class="skill-badge">Slack Workflows</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category__title">
+                        <span class="skill-category__icon skill-category__icon--platform"></span>
+                        Salesforce Platform
+                    </h3>
+                    <div class="skill-category__list">
+                        <span class="skill-badge">Apex Development</span>
+                        <span class="skill-badge">LWC / Aura Components</span>
+                        <span class="skill-badge">Flows & Process Builder</span>
+                        <span class="skill-badge">Service Cloud</span>
+                        <span class="skill-badge">Experience Cloud</span>
+                        <span class="skill-badge">Platform Events</span>
+                        <span class="skill-badge">CDC & Streaming API</span>
+                        <span class="skill-badge">2GP/Unlocked Packages</span>
+                        <span class="skill-badge">SFDX & VS Code</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category__title">
+                        <span class="skill-category__icon skill-category__icon--engineering"></span>
+                        Engineering & Integration
+                    </h3>
+                    <div class="skill-category__list">
+                        <span class="skill-badge">REST API</span>
+                        <span class="skill-badge">SOAP API</span>
+                        <span class="skill-badge">OAuth & JWT</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Splunk Log Analysis</span>
+                        <span class="skill-badge">SSO & MFA</span>
+                        <span class="skill-badge">Selenium Automation</span>
+                        <span class="skill-badge">Agile/Scrum</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Certifications & Achievements</h2>
+                <p class="section__subtitle">Salesforce credentials and recognitions</p>
+            </div>
+            <div class="certifications__grid">
+                <div class="cert-card fade-in">
+                    <div class="cert-card__icon">🏅</div>
+                    <h3 class="cert-card__title">Five Star Ranger</h3>
+                    <p class="cert-card__subtitle">Trailblazer Community</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-card__icon">🤖</div>
+                    <h3 class="cert-card__title">Agentforce Innovator</h3>
+                    <p class="cert-card__subtitle">AI & Automation Excellence</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-card__icon">⚡</div>
+                    <h3 class="cert-card__title">Salesforce Certifications</h3>
+                    <p class="cert-card__subtitle">Platform & Architecture</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-card__icon">🎯</div>
+                    <h3 class="cert-card__title">Trailhead Contributor</h3>
+                    <p class="cert-card__subtitle">Educational Content Creation</p>
+                </div>
+            </div>
+            <div class="certifications__cta">
+                <a href="https://trailblazer.me/id/skuncham92" target="_blank" rel="noopener" class="btn btn--primary">View Trailblazer Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section--alt">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Professional Experience</h2>
+                <p class="section__subtitle">My career journey in Salesforce development and architecture</p>
+            </div>
+            <div class="experience__timeline">
+                <div class="experience-item fade-in">
+                    <div class="experience-item__header">
+                        <div>
+                            <h3 class="experience-item__title">Principal Swarm Lead</h3>
+                            <p class="experience-item__company">Salesforce, Hyderabad</p>
+                        </div>
+                        <span class="experience-item__period">July 2019 - Present</span>
+                    </div>
+                    <p class="experience-item__description">
+                        Leading complex integrations and project rollouts across Service & Experience Cloud. Working with 50+ clients in banking, insurance, and commercial sectors to deliver scalable Salesforce solutions.
+                    </p>
+                    <ul class="experience-item__highlights">
+                        <li>Architected real-time integration solutions using Platform Events, CDC, and Streaming API to enable clients to scale message delivery and overcome API limitations</li>
+                        <li>Designed LWC/Aura components to enhance UI and implement business branding for enterprise clients</li>
+                        <li>Built 2 GP/Unlocked Managed packages for Partners, troubleshooting complex package development issues</li>
+                        <li>Developed Slack ASA bots and workflows, with extensive Agentforce and prompt builder experience</li>
+                        <li>Spearheaded development of internal automation tools that reduced Service Cloud team processing time from days to minutes</li>
+                        <li>Contributed to Salesforce Trailhead content for new product launches, aiding global adoption</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-item__header">
+                        <div>
+                            <h3 class="experience-item__title">Consultant - Salesforce Developer</h3>
+                            <p class="experience-item__company">Capgemini (Farmer's Insurance)</p>
+                        </div>
+                        <span class="experience-item__period">Feb 2017 - July 2019</span>
+                    </div>
+                    <p class="experience-item__description">
+                        Developed and maintained EFNOL/CSP/SOLA insurance applications providing claim management, document handling, and customer service desk capabilities using Salesforce Service Cloud.
+                    </p>
+                    <ul class="experience-item__highlights">
+                        <li>Developed Apex classes, batch jobs, and triggers for critical business functionalities</li>
+                        <li>Built chat functionality in Salesforce Service Cloud for customer support</li>
+                        <li>Engineered 5 Selenium-based automation tools for 24/7 application monitoring, improving system stability</li>
+                        <li>Analyzed system exception logs and provided recommendations to improve performance</li>
+                        <li>Collaborated with customers to understand requirements and facilitate application adoption</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-item__header">
+                        <div>
+                            <h3 class="experience-item__title">Full Stack Developer</h3>
+                            <p class="experience-item__company">Capgemini (ICompass Project)</p>
+                        </div>
+                        <span class="experience-item__period">Feb 2016 - Jan 2017</span>
+                    </div>
+                    <p class="experience-item__description">
+                        Developed ICompass, a unified competency management and assessment platform used across Capgemini to define skill structures and conduct competency assessments.
+                    </p>
+                    <ul class="experience-item__highlights">
+                        <li>Built end-to-end modules using Java Spring Boot and Angular JS with SPA architecture</li>
+                        <li>Implemented Hibernate/JPA with MySQL for robust data persistence</li>
+                        <li>Developed unit tests with JUnit and Mockito, BDD testing with Cucumber and Selenium</li>
+                        <li>Worked on CI/CD pipelines across Windows, Linux, and Ubuntu environments</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-item__header">
+                        <div>
+                            <h3 class="experience-item__title">Intern - VNOC Team</h3>
+                            <p class="experience-item__company">IMI Mobile, Hyderabad</p>
+                        </div>
+                        <span class="experience-item__period">June 2015 - Jan 2016</span>
+                    </div>
+                    <p class="experience-item__description">
+                        Joined as an intern in Virtual Network Operations Center (VNOC), monitoring and maintaining critical infrastructure.
+                    </p>
+                    <ul class="experience-item__highlights">
+                        <li>Worked with IBM Tivoli Monitoring tool for infrastructure health monitoring</li>
+                        <li>Performed server health verification using PING and Traceroute</li>
+                        <li>Monitored server resources and performed routine maintenance activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Featured Projects</h2>
+                <p class="section__subtitle">Notable work and contributions</p>
+            </div>
+            <div class="projects__grid">
+                <div class="project-card fade-in">
+                    <div class="project-card__header">
+                        <span class="project-card__icon">⚡</span>
+                    </div>
+                    <h3 class="project-card__title">Service Cloud Automation Suite</h3>
+                    <p class="project-card__description">
+                        Developed internal automation tools that dramatically improved Service Cloud team efficiency, reducing request processing time from days to minutes through intelligent workflows and process optimization.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="project-card__tag">Apex</span>
+                        <span class="project-card__tag">LWC</span>
+                        <span class="project-card__tag">Service Cloud</span>
+                        <span class="project-card__tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-card__header">
+                        <span class="project-card__icon">📦</span>
+                    </div>
+                    <h3 class="project-card__title">Partner Managed Packages</h3>
+                    <p class="project-card__description">
+                        Architected and built 2 GP/Unlocked Managed packages for Salesforce Partners, solving complex package development challenges and enabling scalable distribution of enterprise solutions.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="project-card__tag">2GP</span>
+                        <span class="project-card__tag">Unlocked Packages</span>
+                        <span class="project-card__tag">SFDX</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-card__header">
+                        <span class="project-card__icon">🤖</span>
+                    </div>
+                    <h3 class="project-card__title">Slack ASA Bot Platform</h3>
+                    <p class="project-card__description">
+                        Built intelligent Slack bots using Agentforce and Slack workflows to automate customer support and internal operations, leveraging prompt builder and LLM configurations for natural conversations.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="project-card__tag">Agentforce</span>
+                        <span class="project-card__tag">Slack</span>
+                        <span class="project-card__tag">AI</span>
+                        <span class="project-card__tag">LLM</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-card__header">
+                        <span class="project-card__icon">🔍</span>
+                    </div>
+                    <h3 class="project-card__title">24/7 Monitoring Automation</h3>
+                    <p class="project-card__description">
+                        Engineered 5 Selenium-based automation tools for continuous application monitoring at Farmer's Insurance, proactively identifying issues and significantly improving system stability and uptime.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="project-card__tag">Selenium</span>
+                        <span class="project-card__tag">Automation</span>
+                        <span class="project-card__tag">QA</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-card__header">
+                        <span class="project-card__icon">📚</span>
+                    </div>
+                    <h3 class="project-card__title">Trailhead Content Development</h3>
+                    <p class="project-card__description">
+                        Contributed to Salesforce's knowledge-sharing initiatives by developing comprehensive Trailhead content for new product launches, helping thousands of developers worldwide learn new Salesforce features.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="project-card__tag">Education</span>
+                        <span class="project-card__tag">Documentation</span>
+                        <span class="project-card__tag">Trailhead</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-card__header">
+                        <span class="project-card__icon">🔗</span>
+                    </div>
+                    <h3 class="project-card__title">Real-Time Integration Framework</h3>
+                    <p class="project-card__description">
+                        Architected enterprise-scale integration solutions using Platform Events, CDC, and Streaming API, enabling clients to efficiently scale message delivery and overcome traditional API governor limits.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="project-card__tag">Platform Events</span>
+                        <span class="project-card__tag">CDC</span>
+                        <span class="project-card__tag">Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section section--alt">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Blog & Writing</h2>
+                <p class="section__subtitle">Thoughts on Salesforce, AI, and cloud architecture</p>
+            </div>
+            <div class="blog__grid">
+                <div class="blog-card fade-in">
+                    <div class="blog-card__content">
+                        <p class="blog-card__meta">Coming Soon</p>
+                        <h3 class="blog-card__title">Building Scalable Agentforce Solutions</h3>
+                        <p class="blog-card__excerpt">
+                            Exploring best practices for architecting AI-powered customer service solutions using Agentforce and Salesforce's prompt builder.
+                        </p>
+                        <a href="#" class="blog-card__link">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card fade-in">
+                    <div class="blog-card__content">
+                        <p class="blog-card__meta">Coming Soon</p>
+                        <h3 class="blog-card__title">Platform Events vs Change Data Capture</h3>
+                        <p class="blog-card__excerpt">
+                            A comprehensive comparison of real-time integration patterns in Salesforce and when to use each approach for optimal performance.
+                        </p>
+                        <a href="#" class="blog-card__link">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card fade-in">
+                    <div class="blog-card__content">
+                        <p class="blog-card__meta">Coming Soon</p>
+                        <h3 class="blog-card__title">Building 2GP Packages: Lessons Learned</h3>
+                        <p class="blog-card__excerpt">
+                            Insights from building managed packages for Salesforce Partners, including common pitfalls and advanced packaging strategies.
+                        </p>
+                        <a href="#" class="blog-card__link">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card fade-in">
+                    <div class="blog-card__content">
+                        <p class="blog-card__meta">Coming Soon</p>
+                        <h3 class="blog-card__title">Slack + Salesforce Integration Patterns</h3>
+                        <p class="blog-card__excerpt">
+                            Deep dive into building intelligent Slack bots and workflows that seamlessly integrate with your Salesforce org.
+                        </p>
+                        <a href="#" class="blog-card__link">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Education</h2>
+            </div>
+            <div class="education__grid">
+                <div class="education-card fade-in">
+                    <h3 class="education-card__degree">Bachelor of Technology</h3>
+                    <p class="education-card__major">Electronics and Communication Engineering</p>
+                    <p class="education-card__university">Jawaharlal Nehru Technological University - Kakinada</p>
+                    <div class="education-card__meta">
+                        <span>2015</span>
+                        <span>•</span>
+                        <span>72.5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section--alt">
+        <div class="section__container">
+            <div class="section__header">
+                <h2 class="section__title">Get In Touch</h2>
+            </div>
+            <div class="contact__content fade-in">
+                <p class="contact__description">
+                    I'm always open to discussing Salesforce architecture, AI-powered solutions, or potential collaboration opportunities. Feel free to reach out!
+                </p>
+                <div class="contact__links">
+                    <a href="mailto:shrikar92@gmail.com" class="btn btn--primary">Email Me</a>
+                    <a href="https://www.linkedin.com/in/shrikar-kuncham-79417256" target="_blank" rel="noopener" class="btn btn--secondary">LinkedIn</a>
+                    <a href="https://trailblazer.me/id/skuncham92" target="_blank" rel="noopener" class="btn btn--secondary">Trailblazer Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__content">
+            <p>&copy; 2026 Shrikar Kuncham. Built with HTML, CSS, and JavaScript.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navbar-nav');
+            nav.classList.toggle('navbar__nav--open');
+        }
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.navbar__link');
+
+        function highlightNav() {
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('navbar__link--active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('navbar__link--active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightNav);
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Close mobile menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navbar-nav').classList.remove('navbar__nav--open');
+            });
+        });
+    </script>
+</body>
+</html>
