@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# my-portfolio
-=======
 # Shrikar Kuncham - Portfolio Website
 
 Personal portfolio website showcasing my experience as a Principal Swarm Lead at Salesforce.
@@ -61,4 +58,3 @@ Then visit `http://localhost:8000`
 ---
 
 © 2026 Shrikar Kuncham. Built with HTML, CSS, and JavaScript.
->>>>>>> 2ba563e (Initial commit: Portfolio website for Shrikar Kuncham)
